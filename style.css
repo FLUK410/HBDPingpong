@@ -1,66 +1,47 @@
 body {
   font-family: 'Kanit', sans-serif;
-  background: #ffe6f0;
+  margin: 0;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+  color: #333;
+}
+
+.intro {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  padding: 10px; /* กันข้อความชิดขอบจอ */
+  background: #ffe6f0;
+  font-size: 1.8rem;
 }
 
-.container {
+.main-content {
   text-align: center;
-  max-width: 500px;
-  width: 100%;
-}
-
-.envelope {
-  width: 200px;
-  height: 150px;
-  background: #ffb6c1;
-  position: relative;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.6s ease;
-  margin: 0 auto; /* จัดซองจดหมายให้อยู่ตรงกลาง */
-}
-
-.envelope:after {
-  content: "✉️";
-  font-size: 50px;
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.letter-content, .more-content {
-  display: none;
-  background: white;
-  border-radius: 15px;
   padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  animation: fadeIn 0.6s ease forwards;
-  word-wrap: break-word;
+  display: none;
 }
 
-p {
-  font-size: 1rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-button {
-  margin-top: 15px;
-  background: #ff69b4;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 10px;
+.gift-box {
+  font-size: 5rem;
   cursor: pointer;
+  margin-top: 50px;
+  transition: transform 0.3s ease;
+}
+.gift-box:hover {
+  transform: scale(1.2);
+}
+
+.card {
+  display: none;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 30px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  animation: fadeIn 0.8s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -68,17 +49,35 @@ button {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ปรับให้เหมาะกับมือถือ */
-@media (max-width: 600px) {
-  .envelope {
-    width: 150px;
-    height: 110px;
-  }
-  p {
-    font-size: 0.95rem;
-  }
-  button {
-    font-size: 0.9rem;
-    padding: 8px 15px;
-  }
+.balloons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.balloons div {
+  position: absolute;
+  bottom: -150px;
+  width: 50px;
+  height: 70px;
+  background: red;
+  border-radius: 50% 50% 45% 45%;
+  animation: balloonUp 6s linear infinite;
+}
+
+@keyframes balloonUp {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-110vh) scale(1.1); }
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
